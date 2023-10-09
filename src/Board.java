@@ -53,4 +53,8 @@ public class Board {
         int col = (number - 1) % 3;
         return new int[]{row, col};
     }
+
+    public String[][] getGameBoard() {
+        return gameBoard;
+    }
 }
