@@ -1,14 +1,25 @@
 public class Board {
     private String[][] gameBoard;
+    private boolean gameOver = false;
+    private String currentPlayer;
 
     //constructor for initializing the board...
     public Board() {
         gameBoard = new String[3][3];
+        currentPlayer = "X";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 gameBoard[i][j] = " ";
             }
         }
+    }
+
+    public String getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(String player) {
+        currentPlayer = player;
     }
 
     // methods to manipulate and get information about the board...
@@ -56,5 +67,39 @@ public class Board {
 
     public String[][] getGameBoard() {
         return gameBoard;
+    }
+
+    public boolean checkForWin(){
+        // Kontrollera rader
+        for (int i = 0; i < gameBoard.length; i++) {
+            if (gameBoard[i][0].equals(gameBoard[i][1]) && gameBoard[i][0].equals(gameBoard[i][2]) && !gameBoard[i][0].equals(" ")) {
+                return true;
+            }
+        }
+
+        // Kontrollera kolumner
+        for (int i = 0; i < gameBoard[0].length; i++) {
+            if (gameBoard[0][i].equals(gameBoard[1][i]) && gameBoard[0][i].equals(gameBoard[2][i]) && !gameBoard[0][i].equals(" ")) {
+                return true;
+            }
+        }
+
+        // Kontrollera diagonaler
+        if (gameBoard[0][0].equals(gameBoard[1][1]) && gameBoard[0][0].equals(gameBoard[2][2]) && !gameBoard[0][0].equals(" ")) {
+            return true;
+        }
+        if (gameBoard[0][2].equals(gameBoard[1][1]) && gameBoard[0][2].equals(gameBoard[2][0]) && !gameBoard[0][2].equals(" ")) {
+            return true;
+        }
+
+        // Om inget av ovanstående är sant, finns det ingen vinnare än
+        return false;
+    }
+    public void changePlayer() {
+        if (currentPlayer.equals("X")) {
+            currentPlayer = "O";
+        } else {
+            currentPlayer = "X";
+        }
     }
 }
