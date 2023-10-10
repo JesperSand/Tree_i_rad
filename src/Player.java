@@ -1,17 +1,11 @@
 public class Player {
+    String name;
+    char marker;
 
-    private String Name;
-
-    public Player() {
-        this.Name = Name;
+    public Player(String name, char marker) {
+        this.name = name;
+        this.marker = marker;
     }
 
-    public String changePlayer(String currentPlayer) {
-        if (currentPlayer.equals("X")) {
-            return "O";
-        } else {
-            return "X";
-        }
-    }
-
+    // Getters och setters här...
 }

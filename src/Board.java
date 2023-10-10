@@ -39,7 +39,7 @@ public class Board {
             }
         }
     }
-
+    //Method to place the marker in the chosen square
     public void placeMarker(int row, int col, String marker) {
         // Check if user input is inside the board
         if (row >= 0 && row < 3 && col >= 0 && col < 3) {
@@ -58,7 +58,7 @@ public class Board {
             System.out.println("Ogiltig rad eller kolumn!");
         }
     }
-
+    //Converts the users input into a position on the board
     public int[] convertNumberToPosition(int number) {
         int row = (number - 1) / 3;
         int col = (number - 1) % 3;
@@ -68,23 +68,23 @@ public class Board {
     public String[][] getGameBoard() {
         return gameBoard;
     }
-
+    //Method to check for possible win
     public boolean checkForWin(){
-        // Kontrollera rader
+        //Checks horizontal wins
         for (int i = 0; i < gameBoard.length; i++) {
             if (gameBoard[i][0].equals(gameBoard[i][1]) && gameBoard[i][0].equals(gameBoard[i][2]) && !gameBoard[i][0].equals(" ")) {
                 return true;
             }
         }
 
-        // Kontrollera kolumner
+        //Checks vertical wins
         for (int i = 0; i < gameBoard[0].length; i++) {
             if (gameBoard[0][i].equals(gameBoard[1][i]) && gameBoard[0][i].equals(gameBoard[2][i]) && !gameBoard[0][i].equals(" ")) {
                 return true;
             }
         }
 
-        // Kontrollera diagonaler
+        //Checks diagonal wins
         if (gameBoard[0][0].equals(gameBoard[1][1]) && gameBoard[0][0].equals(gameBoard[2][2]) && !gameBoard[0][0].equals(" ")) {
             return true;
         }
@@ -92,9 +92,10 @@ public class Board {
             return true;
         }
 
-        // Om inget av ovanstående är sant, finns det ingen vinnare än
+        //If no win is found return false and the game continues
         return false;
     }
+    //Method for changing player
     public void changePlayer() {
         if (currentPlayer.equals("X")) {
             currentPlayer = "O";
