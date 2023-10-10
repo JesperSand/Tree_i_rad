@@ -33,6 +33,10 @@ public class Main {
             if (board.checkForWin()) {
                 System.out.println("Player " + board.getCurrentPlayer() + " wins!");
             }
+            //If game is a draw
+            else if (board.markerCount == 9) {
+                break;
+            }
 
             //Changes player
             board.changePlayer();

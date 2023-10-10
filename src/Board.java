@@ -39,6 +39,8 @@ public class Board {
             }
         }
     }
+
+    int markerCount = 0;
     //Method to place the marker in the chosen square
     public void placeMarker(int row, int col, String marker) {
         // Check if user input is inside the board
@@ -47,6 +49,11 @@ public class Board {
             if (gameBoard[row][col].equals(" ")) {
                 //If empty, place marker
                 gameBoard[row][col] = marker;
+                //For the game to end a draw
+                markerCount++;
+                if (markerCount == 9){
+                    System.out.println("Oj det blev oavgjort!");
+                }
             }
             //If taken, print out an error
             else {
