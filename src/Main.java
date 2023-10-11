@@ -25,7 +25,7 @@ public class Main {
 
             //Stores user input in the numbers variable
             int number = sc.nextInt();
-            //takes the users input and converts to a usable variable and places marker if empty
+            //takes the users input and converts to a position on the board and places marker if empty
             int[] position = board.convertNumberToPosition(number);
             board.placeMarker(position[0], position[1], board.getCurrentPlayer());
 

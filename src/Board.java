@@ -91,14 +91,14 @@ public class Board {
             }
         }
 
-        //Checks diagonal wins
+        //Checks diagonal wins (Top left to bottom right)
         if (gameBoard[0][0].equals(gameBoard[1][1]) && gameBoard[0][0].equals(gameBoard[2][2]) && !gameBoard[0][0].equals(" ")) {
             return true;
         }
+        //(top right to bottom left)
         if (gameBoard[0][2].equals(gameBoard[1][1]) && gameBoard[0][2].equals(gameBoard[2][0]) && !gameBoard[0][2].equals(" ")) {
             return true;
         }
-
         //If no win is found return false and the game continues
         return false;
     }
