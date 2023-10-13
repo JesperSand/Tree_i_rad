@@ -27,7 +27,8 @@ public class Main {
             int number = sc.nextInt();
             //takes the users input and converts to a position on the board and places marker if empty
             int[] position = board.convertNumberToPosition(number);
-            board.placeMarker(position[0], position[1], board.getCurrentPlayer());
+            //Fixes so player get second try if placed on occupied square
+            boolean isPlacementSuccessful = board.placeMarker(position[0], position[1], board.getCurrentPlayer());
 
             //Calls method in board class to check for a win
             if (board.checkForWin()) {
@@ -39,7 +40,9 @@ public class Main {
             }
 
             //Changes player
-            board.changePlayer();
+            if (isPlacementSuccessful) {
+                board.changePlayer();
+            }
         }
 
     }

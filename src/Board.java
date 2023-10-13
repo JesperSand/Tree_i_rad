@@ -42,7 +42,7 @@ public class Board {
 
     int markerCount = 0;
     //Method to place the marker in the chosen square
-    public void placeMarker(int row, int col, String marker) {
+    public boolean placeMarker(int row, int col, String marker) {
         // Check if user input is inside the board
         if (row >= 0 && row < 3 && col >= 0 && col < 3) {
             //Check if square is empty
@@ -54,6 +54,7 @@ public class Board {
                 if (markerCount == 9){
                     System.out.println("Oj det blev oavgjort!");
                 }
+                return true; // Return true since the marker was placed successfully
             }
             //If taken, print out an error
             else {
@@ -64,6 +65,7 @@ public class Board {
         else {
             System.out.println("Ogiltig rad eller kolumn!");
         }
+        return false; // Return false since the marker could not be placed
     }
     //Converts the users input into a position on the board
     public int[] convertNumberToPosition(int number) {
